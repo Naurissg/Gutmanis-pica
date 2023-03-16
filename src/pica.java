@@ -1,4 +1,6 @@
 import javax.swing.JOptionPane;
+import java.util.Arrays;
+import java.util.Comparator;
 public class pica {
 	   public static void main(String[] args) {
 	      //Izveido array lai saglabatu sutijumus
@@ -75,5 +77,38 @@ public class pica {
 			orderCount--;
 			JOptionPane.showMessageDialog(null, "Pasūtījums ir veiksmīgi Nodots klientam!", "Dzēst pasūtījumu", JOptionPane.PLAIN_MESSAGE);
 			break;
+			
+			//sakārto picas augoša seciba pec cenas
+		   case "Kārtot picas augošā/dilstošā secībā pēc cenas":
+			    // pajauta lietotājam, kārtot augoši vai dilstoši
+			    String[] sortOptions = {"Augoši", "Dilstoši"};
+			    String sortOrder = (String) JOptionPane.showInputDialog(null, "Kārtot picas augošā vai dilstošā secībā pēc cenas:", "Kārtot pēc cenas", JOptionPane.PLAIN_MESSAGE, null, sortOptions, sortOptions[0]);
+			    
+			    // izveido kopiju saraksta, lai nesabojātu oriģinālo sarakstu
+			    Order[] sortedOrders = Arrays.copyOf(orders, orderCount);
+			    
+			    // izmanto Arrays.sort metodi, lai sakārtotu sarakstu pēc cenas
+			    if (sortOrder.equals("Augoši")) {
+			        Arrays.sort(sortedOrders, new Comparator<Order>() {
+			            public int compare(Order o1, Order o2) {
+			                return Double.compare(o1.getPrice(), o2.getPrice());
+			            }
+			        });
+			    } else {
+			        Arrays.sort(sortedOrders, new Comparator<Order>() {
+			            public int compare(Order o1, Order o2) {
+			                return Double.compare(o2.getPrice(), o1.getPrice());
+			            }
+			        });
+			    }
+			    
+			    // izvada sakārtoto sarakstu
+			    StringBuilder sb = new StringBuilder();
+			    for (Order o : sortedOrders) {
+			        sb.append(o.toString());
+			        sb.append("\n\n");
+			    }
+			    JOptionPane.showMessageDialog(null, sb.toString(), "Sakārtotas picas", JOptionPane.PLAIN_MESSAGE);
+			    break;
 		}
 	   }
