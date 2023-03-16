@@ -10,7 +10,7 @@
 		   private boolean delivery;
 		private String dzeriens;
 		
-	 public Order(String name, String phone, String address, String size, String[] toppings, String sauce, double price, boolean delivery) {
+	 public Order(String name, String phone, String address, String size, String[] toppings, String sauce, String dzeriens, double price, boolean delivery) {
 	      this.name = name;
 	      this.phone = phone;
 	      this.address = address;

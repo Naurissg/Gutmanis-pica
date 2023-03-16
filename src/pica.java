@@ -61,7 +61,7 @@ public class pica {
 	         }
 	         
 	         // Izveidot jaunu pasūtījuma objektu un pievienot to masīvā
-	         orders[orderCount] = new Order(name, phone, address, size, selectedToppingsArray, selectedSauce, price, delivery);
+	         orders[orderCount] = new Order(name, phone, address, size, selectedToppingsArray, selectedSauce,izveletaisDzeriens, price, delivery);
 	         orderCount++;
 	    break;
 		
@@ -110,5 +110,20 @@ public class pica {
 			    }
 			    JOptionPane.showMessageDialog(null, sb.toString(), "Sakārtotas picas", JOptionPane.PLAIN_MESSAGE);
 			    break;
+		
+			    // Izvada ekrana visus sutijumus
+		    case "Apskatīt izveidotas picas":
+			String allOrders = "";
+			if (orderCount == 0) {
+			JOptionPane.showMessageDialog(null, "Nav izveidots neviens pasūtījums!", "Kļūda", JOptionPane.WARNING_MESSAGE);
+			} else {
+			for (int i = 0; i < orderCount; i++) {
+			allOrders += orders[i].toString() + "\n";
+			}
+			JOptionPane.showMessageDialog(null, allOrders, "Visi pasūtijumi", JOptionPane.PLAIN_MESSAGE);
+			}
+			break;
 		}
-	   }
+		}while(izvelesVariantuNosaukumi != "Iziet no programmas");  
+		}
+		   }
