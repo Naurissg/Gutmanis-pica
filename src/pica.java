@@ -42,5 +42,25 @@ public class pica {
 	         String[] dzeriens = {"Cola", "Sprite", "Pepsi", "Apelsinu sula", "Tomatu sula", "Fanta"};
 	         String izveletaisDzeriens = (String) JOptionPane.showInputDialog(null, "Izvēlieties papildus 0.5l dzērienu:\nCena par jebkuru Dzērienu ir 1 Eur", "Dzērienu izvēle", JOptionPane.PLAIN_MESSAGE, null, dzeriens, dzeriens[0]);
 	         String[] izveletaisDzeriensArray = izveletaisDzeriens.split(",");
+	         // apreķina pirkuma cenu pec lieluma, piedevam un dzēriena
+	         double price = 0.0;
+	         if (size.equals("Maza")) {
+	            price += 5.99;
+	         } else if (size.equals("Videja")) {
+	            price += 7.99;
+	         } else if (size.equals("Lielā")) {
+	            price += 9.99;
+	         }
+	         price += selectedToppingsArray.length * 0.99;
+	         price += izveletaisDzeriensArray.length * 1.99;
+	         // Pievieno sutišanas izmaksas ja tiek izveleta piegade
+	         if (delivery) {
+	            price += 2.99;
+	         }
+	         
+	         // Izveidot jaunu pasūtījuma objektu un pievienot to masīvā
+	         orders[orderCount] = new Order(name, phone, address, size, selectedToppingsArray, selectedSauce, price, delivery);
+	         orderCount++;
+	    break;
 		}
-	   
+	   }
