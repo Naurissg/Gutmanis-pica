@@ -62,5 +62,18 @@ public class pica {
 	         orders[orderCount] = new Order(name, phone, address, size, selectedToppingsArray, selectedSauce, price, delivery);
 	         orderCount++;
 	    break;
+		
+		 case "Nodot picu klientam":
+			   int deleteIndex = Integer.parseInt(JOptionPane.showInputDialog(null, "Ievadiet pasūtījuma indeksu (0-" + (orderCount-1) + "):"));
+			// Pārvieto visus turpmākos pasūtījumus masīvā par vienu indeksu pa labi
+			for (int i = deleteIndex; i < orderCount - 1; i++) {
+			orders[i] = orders[i+1];
+			}
+			// Iestatata pirmo masīva elementu uz nulli
+			orders[orderCount-1] = null;
+			// Samazina pasūtījumu skaitu
+			orderCount--;
+			JOptionPane.showMessageDialog(null, "Pasūtījums ir veiksmīgi Nodots klientam!", "Dzēst pasūtījumu", JOptionPane.PLAIN_MESSAGE);
+			break;
 		}
 	   }
