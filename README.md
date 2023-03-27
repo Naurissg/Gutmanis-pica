@@ -7,4 +7,4 @@ Git pica projekts kur tiek uzlabota programma
 - [x] Projektam ieviests jauns zars (uzlabojumuZars)
 - [x] Izveidoti commiti jaunaja zarā
 - [x] Lietotajam obligati nepieprasa ievadit adresi ja nav nepieciešama sutišana
-- [ ]  Iespēja izvēlēties vairākas piedevas
+- [x]  Iespēja izvēlēties vairākas piedevas
