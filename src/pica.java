@@ -1,6 +1,7 @@
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 import java.util.Comparator;
+import javax.swing.JCheckBox;
 public class pica {
 	   public static void main(String[] args) {
 	      //Izveido array lai saglabatu sutijumus
@@ -36,9 +37,24 @@ public class pica {
 	         String size = (String) JOptionPane.showInputDialog(null, "Izvelieties picas izmēru:\nMaza 5.99 Eur\nVideja 7.99 Eur\nLielā 9.99 Eur", "Picas izmērs", JOptionPane.PLAIN_MESSAGE, null, sizes, sizes[0]);
 	         
 	         // pajauta lietotajam picu piedevas
-	         String[] toppings = {"Peperoni", "Sēnes", "Sīpoli", "desa", "Bekons", "Extra siers"};
-	         String selectedToppings = (String) JOptionPane.showInputDialog(null, "Izvēlieties picas piedevas:\nCena par jebkuru piedevu ir 0.99 Eur", "Picas piedevas", JOptionPane.PLAIN_MESSAGE, null, toppings, null);
-	         String[] selectedToppingsArray = selectedToppings.split(",");
+	         JCheckBox[] toppingCheckBoxes = {
+                     new JCheckBox("Pepperoni"),
+                     new JCheckBox("Sēnes"),
+                     new JCheckBox("Bekons"),
+                     new JCheckBox("Desa"),
+                     new JCheckBox("Ananasi"),
+                     new JCheckBox("Šķiņķis"),
+                     new JCheckBox("moozzarella"),
+                     new JCheckBox("tomati"),
+                     new JCheckBox("Extra siers")};
+             int result = JOptionPane.showConfirmDialog(null, toppingCheckBoxes, "Piedevu cena 0.99 Eur/1:", JOptionPane.OK_CANCEL_OPTION);
+             if (result == JOptionPane.CANCEL_OPTION) {
+                 return;
+             }
+             String[] selectedToppingsArray = Arrays.stream(toppingCheckBoxes)
+                     .filter(JCheckBox::isSelected)
+                     .map(JCheckBox::getText)
+                     .toArray(String[]::new);
 	         
 	         // pajauta lietotajam ievadi picu merci
 	         String[] sauces = {"Kečups", "BBQ", "Saldskābā", "Islandes", "Majonēze", "Ķiploku"};
