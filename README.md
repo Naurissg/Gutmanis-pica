@@ -8,4 +8,4 @@ Git pica projekts kur tiek uzlabota programma
 - [x] Izveidoti commiti jaunaja zarā
 - [x] Lietotajam obligati nepieprasa ievadit adresi ja nav nepieciešama sutišana
 - [x]  Iespēja izvēlēties vairākas piedevas
-- [x]  Uzlabota programma
+- [x]  Uzlabota programma😀
