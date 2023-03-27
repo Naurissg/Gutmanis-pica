@@ -19,13 +19,17 @@ public class pica {
 	         // pajauta lietoajam kontakta informaciju
 	         String name = JOptionPane.showInputDialog("Ievadiet klienta vardu:");
 	         String phone;
+	         String address = "";
 	         do {
 	         phone = JOptionPane.showInputDialog("Ievadiet telefona nummuru (8 cipari):");
 	         } while (phone.length() != 8);
 	    
-	         String address = JOptionPane.showInputDialog("Ievadiet savu adresi:");
 	         boolean delivery = JOptionPane.showConfirmDialog(null, "Vai vē"
 	         		+ "laties saņemt piegādi?\nCena par piegādi ir (2.99€)", "Delivery", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+	         if(delivery == true){
+	        	 address = JOptionPane.showInputDialog("Ievadiet savu adresi:");
+	         }
+	        	 
 	         
 	         // pajauta lietoajam ievadit picas izmeru
 	         String[] sizes = {"Maza", "Videja", "Lielā"};
@@ -61,7 +65,14 @@ public class pica {
 	         }
 	         
 	         // Izveidot jaunu pasūtījuma objektu un pievienot to masīvā
-	         orders[orderCount] = new Order(name, phone, address, size, selectedToppingsArray, selectedSauce,izveletaisDzeriens, price, delivery);
+	         if(delivery == false){
+	        	 orders[orderCount] = new Order(name, phone, size, selectedToppingsArray, selectedSauce,izveletaisDzeriens, price, delivery);
+	        	 
+	        	 }else{
+	        		 orders[orderCount] = new piegadesPica(name, phone, address, size, selectedToppingsArray, selectedSauce,izveletaisDzeriens, price, delivery);
+	        	 }
+	        		 
+	        
 	         orderCount++;
 	    break;
 		
