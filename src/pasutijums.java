@@ -1,5 +1,4 @@
-
-	class Order {
+   class Order {
 		   private String name;
 		   private String phone;
 		   private String address;
